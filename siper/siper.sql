@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Feb 2023 pada 05.51
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 7.3.31
+-- Waktu pembuatan: 19 Feb 2023 pada 17.09
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -211,8 +211,9 @@ CREATE TABLE `tbl_siswa` (
 --
 
 INSERT INTO `tbl_siswa` (`nis`, `nama_siswa`, `jenis_kelamin`, `pass`, `jurusan`, `kelas`, `alamat`, `no_hp`, `status`, `user_id`) VALUES
-(234, 'Wardani', 'P', '123', 'RPL', '12', 'Pemalang', '0987622618', 'aktif', 22),
-(519, 'yusuf', 'L', '123', 'RPL', '12', 'Jogja', '0897654211', 'aktif', 26);
+(157, 'Hana Farida', 'L', '4f4adcbf8c6f66dcfc8a3282ac2bf10a', 'RPL', '10', 'Sleman', '08266272627', 'aktif', 30),
+(234, 'Wardani', 'P', '202cb962ac59075b964b07152d234b70', 'RPL', '12', 'Pemalang', '0987622618', 'aktif', 22),
+(519, 'yusuf', 'L', '202cb962ac59075b964b07152d234b70', 'RPL', '12', 'Jogja', '0897654211', 'aktif', 26);
 
 -- --------------------------------------------------------
 
@@ -232,9 +233,10 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id_user`, `username`, `pass`, `level`) VALUES
-(10, 'Samidah', '1234', 'admin'),
-(22, '234', '123', 'siswa'),
-(26, '519', '123', 'siswa');
+(10, 'Samidah', '81dc9bdb52d04dc20036dbd8313ed055', 'admin'),
+(22, '234', '202cb962ac59075b964b07152d234b70', 'siswa'),
+(26, '519', '202cb962ac59075b964b07152d234b70', 'siswa'),
+(30, '157', '4f4adcbf8c6f66dcfc8a3282ac2bf10a', 'siswa');
 
 --
 -- Indexes for dumped tables
@@ -352,7 +354,7 @@ ALTER TABLE `tbl_rak`
 -- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
