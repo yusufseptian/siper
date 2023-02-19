@@ -1,0 +1,26 @@
+projek perpus smk yppk
+	1. fitur pengembalian fix
+	--> pengembalian lebih dari 7 hari perhari denda 200
+	2. fitur searching fix
+	3. fitur notifikasi fix
+	4. print kartu biasa revisi -> tambah keterangan petugas fix
+	5. foreign key/ relasai siswa & user fix
+	6. riwayat transaksi pengguna fix
+	7. User dan Data Siswa biar bisa edit (Admin)	fix
+	8. nama siswa pada navbar fix
+
+
+
+Opsi baru
+ - penminjaman tidak bisa di edit atau dihapus kalau sudah selesai /kembali fix
+ - data pengembalian tidak bisa dihapus fix
+
+ --------------------------------------------------------------------------------------------------------------------------
+ Username dan password
+	- Samidah (1234)
+	- 234 (123)
+	- 519 (123)
+	- 157 (404)
+
+Pertanyaan :
+	- Pada proses edit data user apakah dapat mengganti level pengguna? karena pada bagian proses, proses edit hanya akan berjalan ketika ada perubahan password.
