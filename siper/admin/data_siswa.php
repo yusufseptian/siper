@@ -14,6 +14,8 @@ include "sidebar_admin.php";
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah">+Tambah</button>
+            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#import">Import</button>
+            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#eksport">Eksport</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -164,6 +166,32 @@ include "sidebar_admin.php";
         </div>
     </form>
 </div>
+
+<div class="modal fade" id="import">
+    <form action="tambah_siswa.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Import Data Siswa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="btn btn-block btn-facebook">Download template</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="upload">Upload File</label>
+                        <input type="file" accept=".xlsx" name="upload" class="form-control"></input>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 <?php
