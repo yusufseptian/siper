@@ -1,3 +1,2 @@
-# siper
-project sistem perpustakaan
-php native & mysql
+Projek sistem Perpustakaan SMK YPPK Sleman
+Php Native
