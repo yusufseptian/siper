@@ -22,5 +22,8 @@ Opsi baru
 	- 519 (123)
 	- 157 (404)
 
-Pertanyaan :
+Catatan Penting :
 	- Pada proses edit data user apakah dapat mengganti level pengguna? karena pada bagian proses, proses edit hanya akan berjalan ketika ada perubahan password.
+	- Pada proses update sampul buku dan pada proses hapus data buku, data sampul buku lama masih belum terhapus. Jika gambar semakin banyak maka akan boros penyimpanan pada storage.
+	- Apakah perlu validasi duplikasi data buku jika untuk mengantisipasi upload file xlsx yang sama lebih dari 1x?
+	- Apakah perlu validasi header? untuk menentukan apakah file xlsx data buku sudah sesuai dengan template.
