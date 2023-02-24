@@ -18,7 +18,7 @@ include "sidebar_admin.php";
     <div class="card-header py-3">
       <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah">+Tambah</button>
       <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#import">Import</button>
-      <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#eksport">Eksport</button>
+      <!-- <a href="export_data_buku.php" class="btn btn-sm btn-success">Export</a> -->
     </div>
     <div class="card-body">
       <div class="table-responsive">
