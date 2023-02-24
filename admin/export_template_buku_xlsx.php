@@ -1,4 +1,6 @@
 <?php
+// Untuk menyembunyikan error jika ada perbedaan versi server atau versi php
+error_reporting(0);
 include_once "../koneksi.php";
 include "../assets/vendor/phpexcell/PHPExcel.php";
 
