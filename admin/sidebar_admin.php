@@ -72,6 +72,7 @@ endif
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="peminjaman.php">Peminjaman Buku</a>
                         <a class="collapse-item" href="pengembalian.php">Pengembalian Buku</a>
+                        <a class="collapse-item" href="bebas_pustaka.php">Bebas Pustaka</a>
                     </div>
                 </div>
             </li>
