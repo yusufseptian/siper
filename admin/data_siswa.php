@@ -70,24 +70,17 @@ include "sidebar_admin.php";
                                 <td><?php echo $row['alamat']; ?></td>
                                 <td><?php echo $row['no_hp']; ?></td>
                                 <td align="center">
-                                    <form action="aksi_statussiwa.php" method="POST">
-                                        <input type="hidden" name="nis" value="<?php echo $row['nis']; ?>">
-                                        <input type="hidden" name="status" value="<?php echo $row['status']; ?>">
-
-                                        <?php
-                                        if ($row['status'] == 'aktif') {
-                                        ?>
-                                            <button type="submit" class="btn btn-success btn-sm"> <i class="fa fa-check"></i></button>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <button type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-times"></i></button>
-                                        <?php
-                                        }
-                                        ?>
-
-                                    </form>
-
+                                    <?php
+                                    if ($row['status'] == 'aktif') {
+                                    ?>
+                                        <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-check"></i></button>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <button type="button" class="btn btn-danger btn-sm"> <i class="fa fa-times"></i></button>
+                                    <?php
+                                    }
+                                    ?>
                                 </td>
                                 <td>
                                     <a href="edit_datasiswa.php?id=<?php echo $row['nis']; ?>" class="btn btn
