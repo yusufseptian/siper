@@ -125,5 +125,5 @@ require 'libraries/html2pdf/autoload.php';
 $pdf = new Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
 $pdf->WriteHTML($html);
 ob_end_clean();
-$pdf->Output('Laporan Peminjaman.pdf', 'I');
+$pdf->Output('Laporan Keuangan Denda.pdf', 'I');
 ?>

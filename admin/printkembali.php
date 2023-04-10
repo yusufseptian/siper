@@ -110,11 +110,11 @@ session_start(); ?>
 </html>
 <?php
 $html = ob_get_contents();
-ob_end_clean();
 
 require 'libraries/html2pdf/autoload.php';
 
 $pdf = new Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
 $pdf->WriteHTML($html);
-$pdf->Output('Laporan Peminjaman.pdf', 'I');
+ob_end_clean();
+$pdf->Output('Laporan Pengembalian.pdf', 'I');
 ?>
