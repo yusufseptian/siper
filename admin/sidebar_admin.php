@@ -90,6 +90,7 @@ endif
                         <a class="collapse-item" target="_blank" href="cetak_siswa.php">Data Siswa</a>
                         <a class="collapse-item" target="_blank" href="cetak_user.php">Data User</a>
                         <a class="collapse-item" target="_blank" href="cetak_denda.php">Denda</a>
+                        <a class="collapse-item" href="keuangan_denda.php">Keuangan Denda</a>
                         <a class="collapse-item" href="index_cetakpinjam.php">Peminjaman Buku</a>
                         <a class="collapse-item" href="index_cetakkembali.php">Pengembalian Buku</a>
                         <a class="collapse-item" target="_blank" href="index_cetakbukutamu.php">Buku Tamu</a>

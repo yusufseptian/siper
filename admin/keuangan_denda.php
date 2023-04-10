@@ -67,7 +67,7 @@ include "sidebar_admin.php";
             tbl_peminjaman.nis = tbl_siswa.nis  INNER JOIN tbl_buku ON 
             tbl_peminjaman.id_buku=tbl_buku.id_buku  INNER JOIN tbl_denda ON 
             tbl_pengembalian.id_denda=tbl_denda.id_denda";
-            $url_cetak = "printkembali.php";
+            $url_cetak = "printkeuangandenda.php";
             $label = "Semua Data Pengembalian Buku";
         } else { // Jika terisi
             // Buat query untuk menampilkan data transaksi sesuai periode tanggal
@@ -76,7 +76,7 @@ include "sidebar_admin.php";
             tbl_peminjaman.nis = tbl_siswa.nis  INNER JOIN tbl_buku ON 
             tbl_peminjaman.id_buku=tbl_buku.id_buku  INNER JOIN tbl_denda ON 
             tbl_pengembalian.id_denda=tbl_denda.id_denda WHERE (tgl_kembali BETWEEN '" . $tgl_awal . "' AND '" . $tgl_akhir . "')";
-            $url_cetak = "printkembali.php?tgl_awal=" . $tgl_awal . "&tgl_akhir=" . $tgl_akhir . "&filter=true";
+            $url_cetak = "printkeuangandenda.php?tgl_awal=" . $tgl_awal . "&tgl_akhir=" . $tgl_akhir . "&filter=true";
             $tgl_awal = date('d-m-Y', strtotime($tgl_awal)); // Ubah format tanggal jadi dd-mm-yyyy
             $tgl_akhir = date('d-m-Y', strtotime($tgl_akhir)); // Ubah format tanggal jadi dd-mm-yyyy
             $label = 'Periode Pengembalian Buku Tanggal ' . $tgl_awal . ' s/d ' . $tgl_akhir;
@@ -102,18 +102,18 @@ include "sidebar_admin.php";
                         <th>Jumlah</th>
                         <th>Tanggal Kembali</th>
                         <th>Denda</th>
-                        <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $sql = mysqli_query($koneksi, $query); // Eksekusi/Jalankan query dari variabel $query
                     $row = mysqli_num_rows($sql); // Ambil jumlah data dari hasil eksekusi $sql
-
+                    $totalDenda = 0;
                     if ($row > 0) { // Jika jumlah data lebih dari 0 (Berarti jika data ada)
                         while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
                             $tgl = date('d-m-Y', strtotime($data['tgl_kembali'])); // Ubah format tanggal jadi dd-mm-yyyy
-
+                            $denda = $data['denda'] * ((int)date_diff(date_create($data['tgl_pinjam']), date_create($data['tgl_kembali']))->format('%r%a') - 7) * $data['jumlah_pinjam'];
+                            $totalDenda += $denda;
                             echo "<tr>";
                             echo "<td>" . $data['nis'] . "</td>";
                             echo "<td>" . $data['nama_siswa'] . "</td>";
@@ -121,14 +121,24 @@ include "sidebar_admin.php";
                             echo "<td>" . $data['tgl_pinjam'] . "</td>";
                             echo "<td>" . $data['jumlah_pinjam'] . "</td>";
                             echo "<td>" . $data['tgl_kembali'] . "</td>";
-                            echo "<td>" . $data['denda'] * ((int)date_diff(date_create($data['tgl_pinjam']), date_create($data['tgl_kembali']))->format('%r%a') - 7) * $data['jumlah_pinjam'] . "</td>";
-                            echo "<td>" . $data['keterangan'] . "</td>";
+                            echo "<td>" . $denda . "</td>";
                             echo "</tr>";
                         }
+                    ?>
+                        <tr>
+                            <th colspan="6" class="text-center">
+                                Total Denda
+                            </th>
+                            <th colspan="6">
+                                Rp <?= $totalDenda ?>
+                            </th>
+                        </tr>
+                    <?php
                     } else { // Jika data tidak ada
                         echo "<tr><td colspan='8'>Data tidak ada</td></tr>";
                     }
                     ?>
+
                 </tbody>
             </table>
         </div>
@@ -145,7 +155,7 @@ include "sidebar_admin.php";
 
     <script>
         $(document).ready(function() {
-            setDateRangePicker(".tgl_awal", ".tgl_akhir")
+            setDateRangePicker(".tgl_awal", ".tgl_akhir");
         })
     </script>
 </body>
