@@ -31,7 +31,7 @@ include "sidebar_admin.php";
         <h3 style="margin-top: 0; "><b>Laporan Pengembalian Buku</b></h3>
         <hr />
 
-        <form method="get" action="index_cetakkembali.php">
+        <form method="get" action="keuangan_denda.php">
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="form-group">
