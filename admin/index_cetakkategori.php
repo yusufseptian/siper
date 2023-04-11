@@ -8,6 +8,7 @@ include "sidebar_admin.php";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,22 +25,24 @@ include "sidebar_admin.php";
     <!-- Include File jQuery -->
     <script src="js/jquery.min.js"></script>
 </head>
+
 <body>
     <div style="padding: 15px;">
         <h3 style="margin-top: 0;"><b>Laporan Kategori</b></h3>
         <hr />
 
 
-        <div style="margin-top: 5px;"> 
-        <a href="printkategori.php">CETAK PDF</a>
+        <div style="margin-top: 5px;">
+            <a href="printkategori.php">CETAK PDF</a>
         </div>
         <br>
-        
+
     </div>
 
 </body>
+
 </html>
 
-<?php 
+<?php
 include "footer_admin.php";
 ?>

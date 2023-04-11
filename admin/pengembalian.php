@@ -72,9 +72,15 @@ $denda = mysqli_fetch_assoc(mysqli_query($koneksi, "select * from tbl_denda wher
                                 <td><?php echo $row['tgl_pinjam']; ?></td>
                                 <td><?php echo $row['jumlah_pinjam']; ?></td>
                                 <td><?php echo $row['tgl_kembali']; ?></td>
-                                <td>
-                                    <?=
-                                    ((int)date_diff(date_create($row['tgl_pinjam']), date_create($row['tgl_kembali']))->format('%r%a') - 7) * $row['denda'] * $row['jumlah_pinjam'] ?>
+                                <td> Rp
+                                    <?php
+                                    $denda = ((int)date_diff(date_create($row['tgl_pinjam']), date_create($row['tgl_kembali']))->format('%r%a') - 7) * $row['denda'] * $row['jumlah_pinjam'];
+                                    if ($denda <= 0) {
+                                        echo "0";
+                                    } else {
+                                        echo $denda;
+                                    }
+                                    ?>
                                 </td>
 
                                 </td>
@@ -154,7 +160,7 @@ $denda = mysqli_fetch_assoc(mysqli_query($koneksi, "select * from tbl_denda wher
                         <input type="text" name="kelas" class="form-control" placeholder="Kelas" id="kelas" required readonly></input>
                     </div>
                     <div class="form-group">
-                        <select class="form-control"  name="id_pinjam" id="id_pinjam" onchange="changeBook(this.value)">
+                        <select class="form-control" name="id_pinjam" id="id_pinjam" onchange="changeBook(this.value)">
                             <option value="">---Pilih Judul Buku---</option>
 
 
@@ -256,11 +262,11 @@ include "footer_admin.php";
 
 
 <script type="text/javascript">
-  $('#select1').select2()
+    $('#select1').select2()
 
 
-  $('#select2').select2()
-  $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-  });
+    $('#select2').select2()
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
 </script>

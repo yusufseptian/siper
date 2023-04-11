@@ -37,9 +37,9 @@ include "sidebar_admin.php";
                     <div class="form-group">
                         <label>Filter Tanggal Kembali</label>
                         <div class="input-group">
-                            <input type="text" name="tgl_awal" value="<?= @$_GET['tgl_awal'] ?>" class="form-control tgl_awal" placeholder="Tanggal Awal">
+                            <input type="date" name="tgl_awal" value="<?= @$_GET['tgl_awal'] ?>" class="form-control tgl_awal" placeholder="Tanggal Awal">
                             <span class="input-group-addon"> s/d </span>
-                            <input type="text" name="tgl_akhir" value="<?= @$_GET['tgl_akhir'] ?>" class="form-control tgl_akhir" placeholder="Tanggal Akhir">
+                            <input type="date" name="tgl_akhir" value="<?= @$_GET['tgl_akhir'] ?>" class="form-control tgl_akhir" placeholder="Tanggal Akhir">
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,10 @@ include "sidebar_admin.php";
                     if ($row > 0) { // Jika jumlah data lebih dari 0 (Berarti jika data ada)
                         while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
                             $tgl = date('d-m-Y', strtotime($data['tgl_kembali'])); // Ubah format tanggal jadi dd-mm-yyyy
-
+                            $denda = $data['denda'] * ((int)date_diff(date_create($data['tgl_pinjam']), date_create($data['tgl_kembali']))->format('%r%a') - 7) * $data['jumlah_pinjam'];
+                            if ($denda <= 0) {
+                                $denda = 0;
+                            }
                             echo "<tr>";
                             echo "<td>" . $data['nis'] . "</td>";
                             echo "<td>" . $data['nama_siswa'] . "</td>";
@@ -121,7 +124,7 @@ include "sidebar_admin.php";
                             echo "<td>" . $data['tgl_pinjam'] . "</td>";
                             echo "<td>" . $data['jumlah_pinjam'] . "</td>";
                             echo "<td>" . $data['tgl_kembali'] . "</td>";
-                            echo "<td>" . $data['denda'] * ((int)date_diff(date_create($data['tgl_pinjam']), date_create($data['tgl_kembali']))->format('%r%a') - 7) * $data['jumlah_pinjam'] . "</td>";
+                            echo "<td>Rp " . $denda . "</td>";
                             echo "<td>" . $data['keterangan'] . "</td>";
                             echo "</tr>";
                         }

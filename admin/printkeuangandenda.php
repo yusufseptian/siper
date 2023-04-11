@@ -83,16 +83,18 @@ session_start(); ?>
                 while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
                     $tgl = date('d-m-Y', strtotime($data['tgl_kembali'])); // Ubah format tanggal jadi dd-mm-yyyy
                     $denda = $data['denda'] * ((int)date_diff(date_create($data['tgl_pinjam']), date_create($data['tgl_kembali']))->format('%r%a') - 7) * $data['jumlah_pinjam'];
-                    $totalDenda += $denda;
-                    echo "<tr>";
-                    echo "<td>" . $data['nis'] . "</td>";
-                    echo "<td>" . $data['nama_siswa'] . "</td>";
-                    echo "<td>" . $data['judul_buku'] . "</td>";
-                    echo "<td>" . $data['tgl_pinjam'] . "</td>";
-                    echo "<td>" . $data['jumlah_pinjam'] . "</td>";
-                    echo "<td>" . $data['tgl_kembali'] . "</td>";
-                    echo "<td>" . $denda . "</td>";
-                    echo "</tr>";
+                    if ($denda > 0) {
+                        $totalDenda += $denda;
+                        echo "<tr>";
+                        echo "<td>" . $data['nis'] . "</td>";
+                        echo "<td>" . $data['nama_siswa'] . "</td>";
+                        echo "<td>" . $data['judul_buku'] . "</td>";
+                        echo "<td>" . $data['tgl_pinjam'] . "</td>";
+                        echo "<td>" . $data['jumlah_pinjam'] . "</td>";
+                        echo "<td>" . $data['tgl_kembali'] . "</td>";
+                        echo "<td> Rp " . $denda . "</td>";
+                        echo "</tr>";
+                    }
                 }
             ?>
                 <tr>
